@@ -2,7 +2,7 @@
 
 // ==================== CONFIGURATION CLOUDINARY ====================
 const CLOUDINARY_CONFIG = {
-    cloudName: 'd24z42j8d',     // Remplace par ton cloud name
+    cloudName: 'dt24o2j8d',     // Remplace par ton cloud name
     uploadPreset: 'Ujlog_preset' // Remplace par ton upload preset (unsigned)
 };
 
