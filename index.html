@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ujlog-etudiant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#accueil" class="active">Accueil</a></li>
+                <li><a href="#cours">Cours</a></li>
+                <li><a href="#td">TD</a></li>
+                <li><a href="#examens">Examens</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-connect" onclick="openModal('login')">Se connecter</button>
+                <button class="btn-inscrire" onclick="openModal('register')">S'inscrire</button>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue sur ujlog-etudiant</h1>
+            <p>Votre plateforme de partage de ressources académiques dans le domaine de l'histoire et de la géographie.</p>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Rechercher un cours, TD, examen...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CM (Cours Magistraux) -->
+    <section id="cm" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Cours Magistraux (CM)</h2>
+            <div class="year-filters">
+                <select class="year-select" id="cm-year">
+                    <option value="all">Toutes les années</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+                <select class="subject-select" id="cm-subject">
+                    <option value="all">Toutes les matières</option>
+                    <option value="histoire">Histoire</option>
+                    <option value="geo">Géographie</option>
+                </select>
+            </div>
+            <div class="cards-grid" id="cm-grid">
+                <!-- Les CM seront chargés dynamiquement -->
+            </div>
+            <button class="btn-load-more" onclick="loadMore('cm')">Voir plus de CM</button>
+        </div>
+    </section>
+
+    <!-- Section TD -->
+    <section id="td" class="section">
+        <div class="container">
+            <h2 class="section-title">Travaux Dirigés</h2>
+            <div class="year-filters">
+                <select class="year-select" id="td-year">
+                    <option value="all">Toutes les années</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+                <select class="subject-select" id="td-subject">
+                    <option value="all">Toutes les matières</option>
+                    <option value="histoire">Histoire</option>
+                    <option value="geo">Géographie</option>
+                </select>
+            </div>
+            <div class="cards-grid" id="td-grid">
+                <!-- Les TD seront chargés dynamiquement -->
+            </div>
+            <button class="btn-load-more" onclick="loadMore('td')">Voir plus de TD</button>
+        </div>
+    </section>
+
+    <!-- Section Examens -->
+    <section id="examens" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Examens</h2>
+            <div class="exam-categories">
+                <div class="category-card" onclick="filterExam('session1')">
+                    <i class="fas fa-pen"></i>
+                    <h3>Session 1</h3>
+                    <p>Examens de fin de semestre</p>
+                </div>
+                <div class="category-card" onclick="filterExam('session2')">
+                    <i class="fas fa-redo"></i>
+                    <h3>Session 2</h3>
+                    <p>Examens de rattrapage</p>
+                </div>
+            </div>
+            <div class="cards-grid" id="examens-grid">
+                <!-- Les examens seront chargés dynamiquement -->
+            </div>
+            <button class="btn-load-more" onclick="loadMore('examens')">Voir plus d'examens</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ujlog-etudiant L2</h3>
+                    <p>Plateforme de partage de ressources pour les étudiants en Histoire-Géographie</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#cours">Cours</a></li>
+                        <li><a href="#td">Travaux Dirigés</a></li>
+                        <li><a href="#examens">Examens</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> arnauddossa21@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +225 0172010446</p>
+                    <p><i class="fas fa-map-marker"></i> Daloa, Côte d'Ivoire</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ujlog-etudiant L2 Histoire-Géo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals de connexion/inscription -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login')">&times;</span>
+            <h2>Connexion</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-submit">Se connecter</button>
+                <p class="form-footer">Pas encore de compte ? <a href="#" onclick="switchModal('register')">S'inscrire</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register')">&times;</span>
+            <h2>Inscription</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nom complet</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Mot de passe</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirm">Confirmer le mot de passe</label>
+                    <input type="password" id="registerConfirm" required>
+                </div>
+                <button type="submit" class="btn-submit">S'inscrire</button>
+                <p class="form-footer">Déjà inscrit ? <a href="#" onclick="switchModal('login')">Se connecter</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
